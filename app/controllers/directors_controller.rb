@@ -36,4 +36,39 @@ class DirectorsController < ApplicationController
 
     render({ :template => "director_templates/eldest" })
   end
+
+  def createdirector
+    new_director = Director.new
+    new_director.name = params[:name]
+    new_director.dob = params[:dob]
+    new_director.bio = params[:bio]
+    new_director.image = params[:image]
+    new_director.save
+
+    redirect_to("/directors")
+  end
+
+  def update
+    the_id = params.fetch("path_id")  # Define the_id properly
+    update_director = Director.find(the_id)
+
+    update_director = Director.new
+    update_director.name = params[:name]
+    update_director.dob = params[:dob]
+    update_director.bio = params[:bio]
+    update_director.image = params[:image]
+    update_director.save
+
+    redirect_to("/directors/#{the_id}")
+  end
+
+  def destroy
+    the_id = params.fetch("path_id")
+    director = Director.find(the_id)
+    director.destroy
+  
+    redirect_to("/directors")
+  end
+  
+
 end

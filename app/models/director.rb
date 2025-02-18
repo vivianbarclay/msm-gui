@@ -11,4 +11,6 @@
 #  updated_at :datetime         not null
 #
 class Director < ApplicationRecord
+  validates :name, presence: true
+  validates :bio, length: { maximum: 500 }
 end
