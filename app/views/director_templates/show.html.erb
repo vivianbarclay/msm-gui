@@ -13,7 +13,7 @@
 <hr>
 
 <form action="/update_director/<%= @the_director.id %>" method="post">
-<input type="hidden" name="path_id" value="<%= @the_director.id %>"> 
+  <input type="hidden" name="path_id" value="<%= @the_director.id %>"> 
   <div>
     <label for="name">Name</label>
     <input type="text" id="name" name="name" value="<%= @the_director.name %>">

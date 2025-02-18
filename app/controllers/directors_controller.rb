@@ -50,9 +50,9 @@ class DirectorsController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")  # Define the_id properly
-    update_director = Director.find(the_id)
+    find_director = Director.where({:id => the_id})
+    update_director = find_director.at(0)
 
-    update_director = Director.new
     update_director.name = params[:name]
     update_director.dob = params[:dob]
     update_director.bio = params[:bio]
@@ -70,5 +70,4 @@ class DirectorsController < ApplicationController
     redirect_to("/directors")
   end
   
-
 end
